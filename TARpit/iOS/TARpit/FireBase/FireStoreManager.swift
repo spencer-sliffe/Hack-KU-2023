@@ -83,15 +83,10 @@ class FireStoreManager {
         }
     }
     
-    private func convertPostToData(_ post: Post) -> [String: Any] {
+    private func convertPostToData(_ post: TarPost) -> [String: Any] {
         var data: [String: Any] = [
-            "id": post.id.uuidString,
-            "likes": post.likes,
+            "id": tarpost.id.uuidString,
             "timestamp": post.timestamp,
-            "likingUsers": post.likingUsers,
-            "dislikes": post.dislikes,
-            "dislikingUsers": post.dislikingUsers,
-            "comments": post.comments
         ]
         
         var postTypeString: String
@@ -151,44 +146,6 @@ class FireStoreManager {
         return data
     }
     
-    func fetchComments(for post: Post, completion: @escaping ([Comment]) -> Void) {
-        let postId = post.id
-        let query = db.collection(postsCollection).whereField("id", isEqualTo: postId.uuidString)
-
-        query.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error fetching post: \(error.localizedDescription)")
-                completion([])
-                return
-            }
-
-            guard let document = querySnapshot?.documents.first else {
-                print("No document found with matching post id")
-                completion([])
-                return
-            }
-
-            document.reference.collection("comments").order(by: "timestamp", descending: true).getDocuments { (commentSnapshot, error) in
-                if let error = error {
-                    print("Error fetching comments: \(error.localizedDescription)")
-                    completion([])
-                } else {
-                    var comments: [Comment] = []
-                    for document in commentSnapshot!.documents {
-                        let data = document.data()
-                        let id = UUID(uuidString: data["id"] as! String)
-                        let text = data["text"] as! String
-                        let commenter = data["commenter"] as! String
-                        let timestamp = data["timestamp"] as! Date
-                        
-                        let comment = Comment(id: id!, text: text, commenter: commenter, timestamp: timestamp)
-                        comments.append(comment)
-                    }
-                    completion(comments)
-                }
-            }
-        }
-    }
     
     func updatePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
         let id = post.id
@@ -220,98 +177,6 @@ class FireStoreManager {
                 }
             } else {
                 completion(.failure(NSError(domain: "No document found with matching id", code: -1, userInfo: nil)))
-            }
-        }
-    }
-    
-    func updateComments(_ post: Post, comment: Comment) {
-        let postId = post.id
-        let query = db.collection(postsCollection).whereField("id", isEqualTo: postId.uuidString)
-
-        query.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error adding comment: \(error.localizedDescription)")
-                return
-            }
-
-            guard let document = querySnapshot?.documents.first else {
-                print("No document found with matching post id")
-                return
-            }
-
-            let commentData: [String: Any] = [
-                "id": comment.id.uuidString,
-                "text": comment.text,
-                "commenter": comment.commenter,
-                "timestamp": comment.timestamp
-            ]
-
-            document.reference.collection("comments").addDocument(data: commentData) { error in
-                if let error = error {
-                    print("Error adding comment: \(error.localizedDescription)")
-                } else {
-                    print("Comment added successfully")
-                }
-            }
-        }
-    }
-
-
-    
-    func updateLikeCount(_ post: Post, likeCount: Int, userId: String, isAdding: Bool) {
-        let postId = post.id
-        
-        let query = db.collection(postsCollection).whereField("id", isEqualTo: postId.uuidString)
-        
-        query.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error updating like count: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let document = querySnapshot?.documents.first else {
-                print("No document found with matching post id")
-                return
-            }
-            
-            document.reference.updateData([
-                "likes": likeCount,
-                "likingUsers": isAdding ? FieldValue.arrayUnion([userId]) : FieldValue.arrayRemove([userId])
-            ]) { error in
-                if let error = error {
-                    print("Error updating like count: \(error.localizedDescription)")
-                } else {
-                    print("Like count updated successfully")
-                }
-            }
-        }
-    }
-    
-    func updateDislikeCount(_ post: Post, dislikeCount: Int, userId: String, isAdding: Bool) {
-        let postId = post.id
-        
-        let query = db.collection(postsCollection).whereField("id", isEqualTo: postId.uuidString)
-        
-        query.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error updating dislike count: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let document = querySnapshot?.documents.first else {
-                print("No document found with matching post id")
-                return
-            }
-            
-            document.reference.updateData([
-                "dislikes": dislikeCount,
-                "dislikingUsers": isAdding ? FieldValue.arrayUnion([userId]) : FieldValue.arrayRemove([userId])
-            ]) { error in
-                if let error = error {
-                    print("Error updating dislike count: \(error.localizedDescription)")
-                } else {
-                    print("Dislike count updated successfully")
-                }
             }
         }
     }
