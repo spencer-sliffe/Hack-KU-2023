@@ -32,6 +32,8 @@
 		456C83D829EAFA3B00AF52D9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D729EAFA3B00AF52D9 /* CustomTextField.swift */; };
 		456C83DA29EAFA9A00AF52D9 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D929EAFA9A00AF52D9 /* CustomUITextField.swift */; };
 		456C83DC29EAFBDA00AF52D9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83DB29EAFBDA00AF52D9 /* ImagePicker.swift */; };
+		456C83DE29EB0B6100AF52D9 /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83DD29EB0B6100AF52D9 /* DocumentPicker.swift */; };
+		456C83E029EB0DE300AF52D9 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83DF29EB0DE300AF52D9 /* MailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		456C83D729EAFA3B00AF52D9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		456C83D929EAFA9A00AF52D9 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		456C83DB29EAFBDA00AF52D9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		456C83DD29EB0B6100AF52D9 /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
+		456C83DF29EB0DE300AF52D9 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 				456C83C829EA49F700AF52D9 /* AuthView.swift */,
 				456C83CC29EA553300AF52D9 /* HomePageView.swift */,
 				456C83D429EA5B8E00AF52D9 /* CreatePostView.swift */,
+				456C83DF29EB0DE300AF52D9 /* MailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				456C83D729EAFA3B00AF52D9 /* CustomTextField.swift */,
 				456C83D929EAFA9A00AF52D9 /* CustomUITextField.swift */,
 				456C83DB29EAFBDA00AF52D9 /* ImagePicker.swift */,
+				456C83DD29EB0B6100AF52D9 /* DocumentPicker.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -248,6 +254,7 @@
 			files = (
 				456C83B529EA3DAB00AF52D9 /* TarPost.swift in Sources */,
 				456C83DA29EAFA9A00AF52D9 /* CustomUITextField.swift in Sources */,
+				456C83DE29EB0B6100AF52D9 /* DocumentPicker.swift in Sources */,
 				456C83B729EA3DB700AF52D9 /* Account.swift in Sources */,
 				456C83DC29EAFBDA00AF52D9 /* ImagePicker.swift in Sources */,
 				456C83BD29EA415200AF52D9 /* TarPitView.swift in Sources */,
@@ -264,6 +271,7 @@
 				456C83C929EA49F700AF52D9 /* AuthView.swift in Sources */,
 				456C83D329EA580D00AF52D9 /* TarRow.swift in Sources */,
 				456C83CD29EA553300AF52D9 /* HomePageView.swift in Sources */,
+				456C83E029EB0DE300AF52D9 /* MailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

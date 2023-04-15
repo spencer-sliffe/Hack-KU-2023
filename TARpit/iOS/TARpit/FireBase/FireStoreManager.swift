@@ -16,6 +16,30 @@ class FireStoreManager {
     private let db = Firestore.firestore()
     private let postsCollection = "Posts"
     
+    func uploadFile(_ fileData: Data, postId: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let storageRef = Storage.storage().reference().child("post_files/\(postId).tar")
+        storageRef.putData(fileData, metadata: nil) { metadata, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            storageRef.downloadURL { url, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                if let url = url {
+                    completion(.success(url.absoluteString))
+                } else {
+                    completion(.failure(NSError(domain: "TARpit", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to get download URL"])))
+                }
+            }
+        }
+    }
+
+    
     func fetchPosts(completion: @escaping (Result<[TarPost], Error>) -> Void) {
         db.collection(postsCollection).getDocuments { (querySnapshot, error) in
             if let error = error {

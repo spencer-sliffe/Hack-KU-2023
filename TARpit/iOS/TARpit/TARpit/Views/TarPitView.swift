@@ -32,6 +32,7 @@ struct TarPitView: View {
                         .foregroundColor(.white)
                     Spacer()
                     Text("TARpit")
+                        .foregroundColor(.white)
                     Spacer()
                     Text("\(Date(), formatter: timeFormatter)")
                         .foregroundColor(.white)
