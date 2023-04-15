@@ -1,0 +1,192 @@
+
+body {
+    background-color: #ffde9b;;
+    background-repeat: repeat;
+  }
+  
+  /* Style the heading */
+  h1 {
+    background-color: #ffde9b;
+    color: #cf931a;
+    font-size: 64px;
+    text-align: center;
+    font-family: fantasy;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px #000;
+  }
+  
+  /* Style the navigation link */
+  .NAV {
+    background-color: #ffde9b;
+    color: #070707;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 10px;
+    width: 98%;
+    margin: auto;
+    
+    text-align: center;
+    border-radius: 5px;
+
+    display: inline-block;
+  }
+  
+  .NAV:hover {
+    
+    color: #000;
+  }
+  
+  .wrapper{
+    margin: auto;
+    text-align: center;
+    height: 50px;
+    
+    border-radius: 10px;
+    
+
+
+
+
+  }
+  /* Style the search bar */
+  .search {
+    text-align: center;
+    
+    border: 1px solid black;
+    border-radius: 5px;
+    
+    height: 20px;
+    width: 200px;
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+    
+  }
+  
+  input[type="text"] {
+    width: 75%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    
+    text-align: center;
+  }
+ .project{
+    border: 2px solid white;
+    width:90%;
+    height:90%;
+    margin:3px;
+
+ }
+  .feed{
+    overflow-y: scroll;
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    margin-top:10px ;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 1250%;
+    
+
+  }
+  
+  .login{
+    
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    
+   
+    
+    
+    text-align: center;
+
+  }
+  .loginboxes{
+    
+    width: 80%;
+    height: 70px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 18px;
+    text-align: center;
+
+
+
+  }
+  .login button{
+    width: 30%;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+
+
+  }
+  .mistakeBox{
+    font-size: 20pt;
+
+
+
+  }
+  .post{
+    width: 80%;
+    height: 70px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 18px;
+    text-align: center; 
+  }
+  .desc{
+    width: 100%;
+    height: 400px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 18px;
+    text-align: left;
+  }
+  .name{
+    width: 50%;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+ 
+  .bio{
+    width: 75%;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    background-color: #ebb549;
+    border-radius: 5px;
+    
+    font-size: 18px;
+    text-align: left;
+  }
