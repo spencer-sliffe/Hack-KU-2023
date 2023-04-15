@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Firebase
 
-struct AutheView: View {
+struct AuthView: View {
     @ObservedObject var authViewModel: AuthViewModel
     @State private var selection = 0
     @State private var signInSuccess = false

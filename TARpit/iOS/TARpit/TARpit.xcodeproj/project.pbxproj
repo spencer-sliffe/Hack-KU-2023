@@ -29,6 +29,7 @@
 		456C83CF29EA57CA00AF52D9 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */; };
 		456C83D129EA57D400AF52D9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D029EA57D400AF52D9 /* StorageManager.swift */; };
 		456C83D329EA580D00AF52D9 /* TarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D229EA580D00AF52D9 /* TarRow.swift */; };
+		456C83D529EA5B8E00AF52D9 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D429EA5B8E00AF52D9 /* CreatePostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 		456C83D029EA57D400AF52D9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		456C83D229EA580D00AF52D9 /* TarRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarRow.swift; sourceTree = "<group>"; };
+		456C83D429EA5B8E00AF52D9 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				456C83C429EA48A500AF52D9 /* ContentView.swift */,
 				456C83C829EA49F700AF52D9 /* AuthView.swift */,
 				456C83CC29EA553300AF52D9 /* HomePageView.swift */,
+				456C83D429EA5B8E00AF52D9 /* CreatePostView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				456C83B729EA3DB700AF52D9 /* Account.swift in Sources */,
 				456C83BD29EA415200AF52D9 /* TarPitView.swift in Sources */,
 				456C83D129EA57D400AF52D9 /* StorageManager.swift in Sources */,
+				456C83D529EA5B8E00AF52D9 /* CreatePostView.swift in Sources */,
 				456C839829EA34D100AF52D9 /* TARpitApp.swift in Sources */,
 				456C83C329EA46BF00AF52D9 /* AuthViewModel.swift in Sources */,
 				456C83C529EA48A500AF52D9 /* ContentView.swift in Sources */,

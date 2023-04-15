@@ -16,7 +16,7 @@ struct HomePageView: View {
         NavigationView {
             ZStack {
                 if !authViewModel.isAuthenticated {
-                    AutheView(authViewModel: authViewModel)
+                    AuthView(authViewModel: authViewModel)
                 } else {
                     TabView(selection: $selectedTab) {
                         
