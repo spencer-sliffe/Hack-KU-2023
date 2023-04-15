@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Icon1024.png",
+      "filename" : "TARpit.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Icon1024 1.png",
+      "filename" : "TARpit 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Icon1024 2.png",
+      "filename" : "TARpit 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
