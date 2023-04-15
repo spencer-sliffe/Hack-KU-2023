@@ -72,8 +72,6 @@ struct CreatePostView: View {
                         .sheet(isPresented: $isDocumentPickerPresented) {
                             DocumentPicker(fileData: $selectedFile)
                         }
-
-
                     }
                     Spacer()
                     

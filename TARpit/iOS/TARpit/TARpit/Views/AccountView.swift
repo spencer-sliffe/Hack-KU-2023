@@ -67,6 +67,7 @@ struct AccountView: View {
             }
             .padding()
         }
-        .edgesIgnoringSafeArea(.bottom)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(LinearGradient(gradient: Gradient(colors: [.yellow, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
     }
 }

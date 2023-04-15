@@ -13,35 +13,37 @@ struct HomePageView: View {
     @ObservedObject var authViewModel = AuthViewModel()
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                if !authViewModel.isAuthenticated {
-                    AuthView(authViewModel: authViewModel)
-                } else {
-                    TabView(selection: $selectedTab) {
-                        
-                        AccountView(authViewModel: authViewModel)
-                            .tag(0)
-                        TarPitView()
-                            .tag(1)
-                    }
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                    .navigationBarHidden(true)
-                }
-            }
-            .edgesIgnoringSafeArea(.bottom)
-            .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [.yellow, .black]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [.yellow, .black]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
             )
+            .edgesIgnoringSafeArea(.all)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            NavigationView {
+                ZStack {
+                    if !authViewModel.isAuthenticated {
+                        AuthView(authViewModel: authViewModel)
+                    } else {
+                        TabView(selection: $selectedTab) {
+                            
+                            AccountView(authViewModel: authViewModel)
+                                .tag(0)
+                            TarPitView()
+                                .tag(1)
+                        }
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                        .navigationBarHidden(true)
+                    }
+                }
+                .edgesIgnoringSafeArea(.all)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
         HomePageView()
