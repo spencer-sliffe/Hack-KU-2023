@@ -41,3 +41,10 @@ struct HomePageView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
+struct HomePageView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomePageView()
+            .environmentObject(AuthViewModel())
+    }
+}

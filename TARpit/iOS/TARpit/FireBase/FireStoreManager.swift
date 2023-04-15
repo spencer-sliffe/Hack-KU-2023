@@ -4,14 +4,6 @@
 //
 //  Created by Spencer SLiffe on 4/14/23.
 //
-
-import Foundation
-//
-//  FSPostManager.swift
-//  Kobra
-//
-//  Created by Spencer Sliffe on 4/1/23.
-//
 import Foundation
 import FirebaseFirestore
 import Firebase
@@ -24,19 +16,19 @@ class FireStoreManager {
     private let db = Firestore.firestore()
     private let postsCollection = "Posts"
     
-    func fetchPosts(completion: @escaping (Result<[Post], Error>) -> Void) {
+    func fetchPosts(completion: @escaping (Result<[TarPost], Error>) -> Void) {
         db.collection(postsCollection).getDocuments { (querySnapshot, error) in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            var posts: [Post] = []
+            var tarPosts: [TarPost] = []
             querySnapshot?.documents.forEach { document in
                 let data = document.data()
-                let post = self.createPostFrom(data: data)
-                posts.append(post)
+                let tarPost = self.createPostFrom(data: data)
+                tarPosts.append(tarPost)
             }
-            completion(.success(posts))
+            completion(.success(tarPosts))
         }
     }
     
@@ -68,12 +60,22 @@ class FireStoreManager {
         }
     }
     
-    private func createPostFrom(data: [String: Any]) -> Post {
+    private func createPostFrom(data: [String: Any]) -> TarPost {
+        let id = UUID(uuidString: data["id"] as? String ?? "") ?? UUID()
+        let timestamp = (data["timestamp"] as? Timestamp)?.dateValue() ?? Date()
+        let author = data["author"] as? String ?? ""
+        let description = data["description"] as? String ?? ""
+        let title = data["title"] as? String ?? ""
+        let imageURL = data["imageURL"] as? String
+        let fileURL = data["fileURL"] as? String 
+        return TarPost(id: id, fileURL: fileURL, timestamp: timestamp, imageURL: imageURL,  author: author, description: description, title: title)
+
+
     }
     
-    func addPost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
+    func addPost(_ tarPost: TarPost, completion: @escaping (Result<Void, Error>) -> Void) {
         // Convert the Post struct into a data dictionary
-        let data = self.convertPostToData(post)
+        let data = self.convertPostToData(tarPost)
         db.collection(postsCollection).addDocument(data: data) { error in
             if let error = error {
                 completion(.failure(error))
@@ -83,73 +85,28 @@ class FireStoreManager {
         }
     }
     
-    private func convertPostToData(_ post: TarPost) -> [String: Any] {
+    private func convertPostToData(_ tarPost: TarPost) -> [String: Any] {
         var data: [String: Any] = [
-            "id": tarpost.id.uuidString,
-            "timestamp": post.timestamp,
+            "id": tarPost.id.uuidString,
+            "timestamp": tarPost.timestamp,
+            "author": tarPost.author,
+            "description": tarPost.description,
+            "title": tarPost.title
         ]
         
-        var postTypeString: String
-        var marketPostTypeString: String?
-        switch post.type {
-        case .advertisement(let advertisementPost):
-            postTypeString = "advertisement"
-            data["poster"] = advertisementPost.poster
-            data["title"] = advertisementPost.title
-            data["content"] = advertisementPost.content
-            data["category"] = advertisementPost.category
-        case .help(let helpPost):
-            postTypeString = "help"
-            data["poster"] = helpPost.poster
-            data["question"] = helpPost.question
-            data["details"] = helpPost.details
-            data["category"] = helpPost.category
-        case .news(let newsPost):
-            postTypeString = "news"
-            data["poster"] = newsPost.poster
-            data["headline"] = newsPost.headline
-            data["article"] = newsPost.article
-            data["category"] = newsPost.category
-        case .market(let marketPost):
-            postTypeString = "market"
-            data["vendor"] = marketPost.vendor
-            data["price"] = marketPost.price
-            data["category"] = marketPost.category
-            
-            switch marketPost.type {
-            case .hardware(let hardware):
-                marketPostTypeString = "hardware"
-                data["name"] = hardware.name
-                data["condition"] = hardware.condition.rawValue
-                data["description"] = hardware.description
-            case .software(let software):
-                marketPostTypeString = "software"
-                data["name"] = software.name
-                data["description"] = software.description
-            case .service(let service):
-                marketPostTypeString = "service"
-                data["name"] = service.name
-                data["description"] = service.description
-            case .other(let other):
-                marketPostTypeString = "other"
-                data["title"] = other.title
-                data["description"] = other.description
-            }
-            if let marketPostTypeString = marketPostTypeString {
-                data["marketPostType"] = marketPostTypeString
-            }
-        }
-        data["postType"] = postTypeString
-        if let imageURL = post.imageURL {
+        if let imageURL = tarPost.imageURL {
             data["imageURL"] = imageURL
+        }
+        if let fileURL = tarPost.fileURL {
+            data["fileURL"] = fileURL
         }
         return data
     }
     
     
-    func updatePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
-        let id = post.id
-        let data = self.convertPostToData(post)
+    func updatePost(_ tarPost: TarPost, completion: @escaping (Result<Void, Error>) -> Void) {
+        let id = tarPost.id
+        let data = self.convertPostToData(tarPost)
         db.collection(postsCollection).document(id.uuidString).setData(data) { error in
             if let error = error {
                 completion(.failure(error))
@@ -159,8 +116,8 @@ class FireStoreManager {
         }
     }
     
-    func deletePost(_ post: Post, completion: @escaping (Result<Void, Error>) -> Void) {
-        let postId = post.id
+    func deletePost(_ tarPost: TarPost, completion: @escaping (Result<Void, Error>) -> Void) {
+        let postId = tarPost.id
         
         let query = db.collection(postsCollection).whereField("id", isEqualTo: postId.uuidString)
         
@@ -181,14 +138,14 @@ class FireStoreManager {
         }
     }
     
-    func addPostWithImage(_ post: Post, image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
-        self.addPost(post) { result in
+    func addPostWithImage(_ tarPost: TarPost, image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
+        self.addPost(tarPost) { result in
             switch result {
             case .success:
-                self.uploadImage(image, postId: post.id.uuidString) { result in
+                self.uploadImage(image, postId: tarPost.id.uuidString) { result in
                     switch result {
                     case .success(let imageURL):
-                        self.updateImageURLForPost(post, imageURL: imageURL, completion: completion)
+                        self.updateImageURLForPost(tarPost, imageURL: imageURL, completion: completion)
                     case .failure(let error):
                         completion(.failure(error))
                     }
@@ -200,8 +157,8 @@ class FireStoreManager {
     }
     
     // New function to update the image URL of a post
-    private func updateImageURLForPost(_ post: Post, imageURL: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let id = post.id
+    private func updateImageURLForPost(_ tarPost: TarPost, imageURL: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let id = tarPost.id
         let postRef = db.collection(postsCollection).document(id.uuidString)
         postRef.updateData([
             "imageURL": imageURL

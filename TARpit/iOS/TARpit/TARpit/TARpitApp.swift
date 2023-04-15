@@ -28,7 +28,7 @@ struct YourApp: App {
   var body: some Scene {
     WindowGroup {
       NavigationView {
-          TarPostView()
+          TarPitView()
       }
     }
   }

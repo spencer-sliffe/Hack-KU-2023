@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TarPitView: View {
     @State private var isPresentingCreatePostView = false
-      @ObservedObject var viewModel = TarPitViewModel()
+    @ObservedObject var viewModel = TarPitViewModel()
     
     var timeFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -41,8 +41,8 @@ struct TarPitView: View {
             Spacer()
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
-                    ForEach(viewModel.posts.sorted(by: { $0.timestamp > $1.timestamp })) { post in
-                        TarRow(post: post)
+                    ForEach(viewModel.tarPosts.sorted(by: { $0.timestamp > $1.timestamp })) { tarPost in
+                        TarRow(tarPost: tarPost)
                             .environmentObject(viewModel)
                             .background(Color.clear)
                     }

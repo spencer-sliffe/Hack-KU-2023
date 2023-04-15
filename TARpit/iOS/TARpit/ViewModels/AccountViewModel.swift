@@ -11,7 +11,7 @@ import SwiftUI
 class AccountViewModel: ObservableObject {
     @Published var account: Account?
     @Published var isLoading3 = true
-    @Published var userPosts: [Post] = []
+    @Published var userPosts: [TarPost] = []
     
     init() {
         fetchAccount()
@@ -32,8 +32,7 @@ class AccountViewModel: ObservableObject {
             }
             let data = document.data()!
             let email = user.email ?? ""
-            let subscription = data["subscription"] as? Bool ?? false
-            var account = Account(id: user.uid, email: email, subscription: subscription, packageData: nil, profilePicture: nil)
+            var account = Account(id: user.uid, email: email, profilePicture: nil)
             
             self.account = account
             self.isLoading3 = false

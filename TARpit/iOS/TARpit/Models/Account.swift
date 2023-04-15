@@ -12,7 +12,7 @@ struct Account {
     var email: String
     var profilePicture: URL?
 
-    init(id: String, email: String, subscription: Bool, packageData: [String: Any]?, profilePicture: String?) {
+    init(id: String, email: String, profilePicture: String?) {
         self.id = id
         self.email = email
         self.profilePicture = profilePicture.flatMap { URL(string: $0) }

@@ -10,9 +10,10 @@ import Combine
 import SwiftUI
 
 class TarPitViewModel: ObservableObject {
-    @Published var posts: [Post] = []
+    @Published var tarPosts: [TarPost] = []
     private var cancellables: Set<AnyCancellable> = []
-    
+    private let postManager = FireStoreManager.shared
+
     init() {
         fetchPosts()
     }
@@ -25,8 +26,8 @@ class TarPitViewModel: ObservableObject {
         postManager.fetchPosts { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let posts):
-                    self?.posts = posts
+                case .success(let tarPosts):
+                    self?.tarPosts = tarPosts
                 case .failure(let error):
                     print("Error fetching posts: \(error.localizedDescription)")
                 }
@@ -34,12 +35,12 @@ class TarPitViewModel: ObservableObject {
         }
     }
     
-    func addPost(_ post: Post, image: UIImage? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
+    func addPost(_ tarPost: TarPost, image: UIImage? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
         if let image = image {
-            postManager.uploadImage(image, postId: post.id.uuidString) { [weak self] result in
+            postManager.uploadImage(image, postId: tarPost.id.uuidString) { [weak self] result in
                 switch result {
                 case .success(let imageURL):
-                    let newPost = post
+                    let newPost = tarPost
                     newPost.imageURL = imageURL
                     self?.addPostToDatabase(newPost, completion: completion)
                 case .failure(let error):
@@ -48,12 +49,12 @@ class TarPitViewModel: ObservableObject {
                 }
             }
         } else {
-            addPostToDatabase(post, completion: completion)
+            addPostToDatabase(tarPost, completion: completion)
         }
     }
     
-    private func addPostToDatabase(_ post: Post, completion: ((Result<Void, Error>) -> Void)? = nil) {
-        postManager.addPost(post) { [weak self] result in
+    private func addPostToDatabase(_ tarPost: TarPost, completion: ((Result<Void, Error>) -> Void)? = nil) {
+        postManager.addPost(tarPost) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
@@ -67,8 +68,8 @@ class TarPitViewModel: ObservableObject {
         }
     }
     
-    func updatePost(_ post: Post) {
-        postManager.updatePost(post) { [weak self] result in
+    func updatePost(_ tarPost: TarPost) {
+        postManager.updatePost(tarPost) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
@@ -80,12 +81,12 @@ class TarPitViewModel: ObservableObject {
         }
     }
     
-    func deletePost(_ post: Post) {
-        postManager.deletePost(post) { [weak self] result in
+    func deletePost(_ tarPost: TarPost) {
+        postManager.deletePost(tarPost) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    if let imageURL = post.imageURL {
+                    if let imageURL = tarPost.imageURL {
                         self?.postManager.deleteImage(imageURL: imageURL) { result in
                             switch result {
                             case .success:
