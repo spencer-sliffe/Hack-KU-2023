@@ -17,9 +17,18 @@
 		456C83AF29EA3C5900AF52D9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 456C83AE29EA3C5900AF52D9 /* FirebaseStorage */; };
 		456C83B529EA3DAB00AF52D9 /* TarPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83B429EA3DAB00AF52D9 /* TarPost.swift */; };
 		456C83B729EA3DB700AF52D9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83B629EA3DB700AF52D9 /* Account.swift */; };
-		456C83B929EA412600AF52D9 /* TarPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83B829EA412600AF52D9 /* TarPostViewModel.swift */; };
+		456C83B929EA412600AF52D9 /* TarPitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83B829EA412600AF52D9 /* TarPitViewModel.swift */; };
 		456C83BB29EA414400AF52D9 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83BA29EA414400AF52D9 /* AccountViewModel.swift */; };
-		456C83BD29EA415200AF52D9 /* TarPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83BC29EA415200AF52D9 /* TarPostView.swift */; };
+		456C83BD29EA415200AF52D9 /* TarPitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83BC29EA415200AF52D9 /* TarPitView.swift */; };
+		456C83C129EA43C400AF52D9 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83C029EA43C400AF52D9 /* AccountView.swift */; };
+		456C83C329EA46BF00AF52D9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83C229EA46BF00AF52D9 /* AuthViewModel.swift */; };
+		456C83C529EA48A500AF52D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83C429EA48A500AF52D9 /* ContentView.swift */; };
+		456C83C729EA490B00AF52D9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83C629EA490B00AF52D9 /* Post.swift */; };
+		456C83C929EA49F700AF52D9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83C829EA49F700AF52D9 /* AuthView.swift */; };
+		456C83CD29EA553300AF52D9 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83CC29EA553300AF52D9 /* HomePageView.swift */; };
+		456C83CF29EA57CA00AF52D9 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */; };
+		456C83D129EA57D400AF52D9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D029EA57D400AF52D9 /* StorageManager.swift */; };
+		456C83D329EA580D00AF52D9 /* TarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D229EA580D00AF52D9 /* TarRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +39,18 @@
 		456C83A529EA3BB800AF52D9 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-2.plist"; sourceTree = "<group>"; };
 		456C83B429EA3DAB00AF52D9 /* TarPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarPost.swift; sourceTree = "<group>"; };
 		456C83B629EA3DB700AF52D9 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		456C83B829EA412600AF52D9 /* TarPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarPostViewModel.swift; sourceTree = "<group>"; };
+		456C83B829EA412600AF52D9 /* TarPitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarPitViewModel.swift; sourceTree = "<group>"; };
 		456C83BA29EA414400AF52D9 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
-		456C83BC29EA415200AF52D9 /* TarPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarPostView.swift; sourceTree = "<group>"; };
+		456C83BC29EA415200AF52D9 /* TarPitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarPitView.swift; sourceTree = "<group>"; };
+		456C83C029EA43C400AF52D9 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		456C83C229EA46BF00AF52D9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		456C83C429EA48A500AF52D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		456C83C629EA490B00AF52D9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		456C83C829EA49F700AF52D9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		456C83CC29EA553300AF52D9 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
+		456C83D029EA57D400AF52D9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		456C83D229EA580D00AF52D9 /* TarRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +110,11 @@
 		456C83B029EA3C6700AF52D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				456C83BC29EA415200AF52D9 /* TarPostView.swift */,
+				456C83BC29EA415200AF52D9 /* TarPitView.swift */,
+				456C83C029EA43C400AF52D9 /* AccountView.swift */,
+				456C83C429EA48A500AF52D9 /* ContentView.swift */,
+				456C83C829EA49F700AF52D9 /* AuthView.swift */,
+				456C83CC29EA553300AF52D9 /* HomePageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -100,8 +122,9 @@
 		456C83B129EA3C7D00AF52D9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				456C83B829EA412600AF52D9 /* TarPostViewModel.swift */,
+				456C83B829EA412600AF52D9 /* TarPitViewModel.swift */,
 				456C83BA29EA414400AF52D9 /* AccountViewModel.swift */,
+				456C83C229EA46BF00AF52D9 /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -111,6 +134,8 @@
 			children = (
 				456C83B429EA3DAB00AF52D9 /* TarPost.swift */,
 				456C83B629EA3DB700AF52D9 /* Account.swift */,
+				456C83C629EA490B00AF52D9 /* Post.swift */,
+				456C83D229EA580D00AF52D9 /* TarRow.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +143,8 @@
 		456C83B329EA3CFF00AF52D9 /* FireBase */ = {
 			isa = PBXGroup;
 			children = (
+				456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */,
+				456C83D029EA57D400AF52D9 /* StorageManager.swift */,
 			);
 			path = FireBase;
 			sourceTree = "<group>";
@@ -204,10 +231,19 @@
 			files = (
 				456C83B529EA3DAB00AF52D9 /* TarPost.swift in Sources */,
 				456C83B729EA3DB700AF52D9 /* Account.swift in Sources */,
-				456C83BD29EA415200AF52D9 /* TarPostView.swift in Sources */,
+				456C83BD29EA415200AF52D9 /* TarPitView.swift in Sources */,
+				456C83D129EA57D400AF52D9 /* StorageManager.swift in Sources */,
 				456C839829EA34D100AF52D9 /* TARpitApp.swift in Sources */,
+				456C83C329EA46BF00AF52D9 /* AuthViewModel.swift in Sources */,
+				456C83C529EA48A500AF52D9 /* ContentView.swift in Sources */,
+				456C83C129EA43C400AF52D9 /* AccountView.swift in Sources */,
 				456C83BB29EA414400AF52D9 /* AccountViewModel.swift in Sources */,
-				456C83B929EA412600AF52D9 /* TarPostViewModel.swift in Sources */,
+				456C83CF29EA57CA00AF52D9 /* FireStoreManager.swift in Sources */,
+				456C83B929EA412600AF52D9 /* TarPitViewModel.swift in Sources */,
+				456C83C929EA49F700AF52D9 /* AuthView.swift in Sources */,
+				456C83D329EA580D00AF52D9 /* TarRow.swift in Sources */,
+				456C83CD29EA553300AF52D9 /* HomePageView.swift in Sources */,
+				456C83C729EA490B00AF52D9 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
