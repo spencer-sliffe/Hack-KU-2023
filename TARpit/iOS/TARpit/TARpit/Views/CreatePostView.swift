@@ -23,7 +23,7 @@ struct CreatePostView: View {
         NavigationView {
             ZStack {
                 LinearGradient(
-                    gradient: Gradient(colors: [.black, .blue]),
+                    gradient: Gradient(colors: [.yellow, .black]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )

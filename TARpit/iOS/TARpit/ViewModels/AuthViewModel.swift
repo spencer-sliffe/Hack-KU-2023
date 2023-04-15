@@ -77,8 +77,7 @@ class AuthViewModel: ObservableObject {
             let db = Firestore.firestore()
             db.collection("Accounts").document(authResult!.user.uid).setData([
                 "email": self.email,
-                "subscription": false,
-                "package": ""
+                "subscription": false
             ]) { error in
                 if let error = error {
                     self.isError = true

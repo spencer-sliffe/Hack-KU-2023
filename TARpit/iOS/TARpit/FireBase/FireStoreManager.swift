@@ -54,7 +54,7 @@ class FireStoreManager {
                 if let url = url {
                     completion(.success(url.absoluteString))
                 } else {
-                    completion(.failure(NSError(domain: "Kobra", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to get download URL"])))
+                    completion(.failure(NSError(domain: "TARpit", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to get download URL"])))
                 }
             }
         }

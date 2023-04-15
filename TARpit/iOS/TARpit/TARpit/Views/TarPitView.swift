@@ -49,10 +49,20 @@ struct TarPitView: View {
                 }
             }
             .background(Color.clear)
+            Button(action: {
+                isPresentingCreatePostView.toggle()
+            }) {
+                Text("Create Post")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(8)
+            }
+            .padding()
         }
         .background(
             LinearGradient(
-                gradient: Gradient(colors: [.black, .blue]),
+                gradient: Gradient(colors: [.yellow, .black]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -64,26 +74,5 @@ struct TarPitView: View {
         .sheet(isPresented: $isPresentingCreatePostView) {
             CreatePostView().environmentObject(viewModel)
         }
-    }
-}
-
-extension View {
-    func listBackground(_ color: Color) -> some View {
-        modifier(ListBackgroundModifier(color: color))
-    }
-}
-
-private struct ListBackgroundModifier: ViewModifier {
-    let color: Color
-    
-    @ViewBuilder
-    func body(content: Content) -> some View {
-        content
-            .background(color)
-            .listRowBackground(color)
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
-                UITableViewCell.appearance().backgroundColor = .clear
-            }
     }
 }

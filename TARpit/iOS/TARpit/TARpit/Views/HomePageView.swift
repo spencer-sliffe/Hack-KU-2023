@@ -23,7 +23,7 @@ struct HomePageView: View {
                         AccountView(authViewModel: authViewModel)
                             .tag(0)
                         TarPitView()
-                            .tag(0)
+                            .tag(1)
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .navigationBarHidden(true)
@@ -32,7 +32,7 @@ struct HomePageView: View {
             .edgesIgnoringSafeArea(.bottom)
             .background(
                 LinearGradient(
-                    gradient: Gradient(colors: [.black, .blue]),
+                    gradient: Gradient(colors: [.yellow, .black]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )

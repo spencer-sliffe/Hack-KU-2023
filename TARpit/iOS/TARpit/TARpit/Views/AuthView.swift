@@ -18,11 +18,8 @@ struct AuthView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [.black, .blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
                 VStack(spacing: 20) {
-                    Image("kobracoding-logo")
+                    Image("TARpit-logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: UIScreen.main.bounds.height * 0.25)
@@ -97,7 +94,7 @@ struct AuthView: View {
                     authViewModel.stopListening()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(LinearGradient(gradient: Gradient(colors: [.black, .blue]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .background(LinearGradient(gradient: Gradient(colors: [.yellow, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
             }
             .navigationBarHidden(true)
             .onReceive(authViewModel.$isAuthenticated) { isAuthenticated in
@@ -110,6 +107,5 @@ struct AuthView: View {
                     .navigationBarBackButtonHidden(true)
                     .navigationBarHidden(true)
             }
-        } .navigationBarHidden(true)
     }
 }
