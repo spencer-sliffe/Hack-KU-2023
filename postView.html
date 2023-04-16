@@ -1,21 +1,24 @@
 <form action="postView.html" method="post">
-    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="stylesheet" href="home.css">
     <title>Post</title>
-    <h1>TARPIT</h1>
+    <h1>
+      <img src="iconhack2023.png" z-index="1" width="200" height="200">
+      <br>TARPIT
+    </h1>
   
     <div class="login" style="margin-top: 10%;">
       
-      <input class="name" type="name" placeholder="Project Name"  required>
-      <textarea class="desc" type="description" placeholder="desc"></textarea> 
+      <input id="name" class="name" type="name" placeholder="Project Name"  required>
+      <textarea id="desc" class="desc" type="description" placeholder="desc"></textarea> 
       <br>
         <label>Select a file:</label>
-        <input class="file" type="file" id="file" name="file">
+        <input class="file" id="file" type="file" id="file" name="file">
 
   
     </div>
   
     <div class="login">
-    <button class="login" style="font-size: 16pt"; type="post" href="TARview.html">Post</button>
+    <button class="login" onclick="savePost()" style="font-size: 16pt"; type="post" href="home.html">Post</button>
         <br>
     
     </div>

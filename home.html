@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TARPIT</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <h1> 
+        <img src="iconhack2023.png" z-index="1" width="200" height="200">
+       <br>
+        WELCOME TO THE TAR PIT
+    </h1>
+    <nav>
+        <a class="NAV" button href="about.html">About</a>
+        <a class="NAV" button href="postView.html">Post</a>
+    </nav>
+    <main class="wrapper">
+        <form class="searchBar" id="search"> 
+            <input style="text-align:center;" type="text" id="search" name="search" placeholder="Search:">
+        </form>
+
+        <div class="feed" onload="getFireBaseData()">
+        <span class="project" id="project">
+
+        </span>
+        
+        </div>
+    </main>
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js"></script>
+<script src="script.js"></script>
+
+
+</html>

@@ -76,6 +76,7 @@ body {
     width:90%;
     height:90%;
     margin:3px;
+    color: rgb(245, 242, 210)
 
  }
   .feed{
@@ -156,11 +157,11 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
-    
+    vertical-align: top;
     border-radius: 5px;
     border: 1px solid black;
     font-size: 18px;
-    text-align: left;
+    text-align: start;
   }
   .name{
     width: 50%;
@@ -190,3 +191,27 @@ body {
     font-size: 18px;
     text-align: left;
   }
+  
+  .create{
+    margin-left: 100;
+    margin-right: 100;
+    margin-top: 10px;
+    text-align: center;
+    align-self: center;
+
+
+   
+  }
+  button {
+    background-color: #7e5600; 
+    border: none; /* Remove the border */
+    color: rgb(255, 227, 87); /* Set the text color */
+    padding: 12px 24px; /* Set the padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove the underline */
+    display: inline-block; /* Set the display to inline-block */
+    font-size: 16px; /* Set the font size */
+    border-radius: 4px; /* Add rounded corners */
+    cursor: pointer; /* Change the cursor to a pointer */
+  }
+  

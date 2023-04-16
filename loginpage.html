@@ -1,8 +1,8 @@
 <form action="loginpage.html" method="post">
-    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="stylesheet" href="home.css">
     <title>Login</title>
     <h1>
-        Login
+      <img src="iconhack2023.png" z-index="1" width="200" height="200"><br>Login
     </h1>
   
     <div class="login" style="margin-top: 10%;">
@@ -12,15 +12,26 @@
       
       <input class="loginboxes" type="password" placeholder="Enter Password"  required>
   
+
     </div>
   
     <div class="login">
-    <button class="login" style="font-size: 16pt"; type="submit" href="TARview.html">Post</button>
+    <button class="login" style="font-size: 16pt"; type="submit" href="home.html">Post</button>
         <br>
     <div class="mistakeBox">
-      <span  class="Sign up" style="margin-right: 50px;"> Dont have an Account:<a href="#">Signup</a></span>
+      <span  class="Sign up" ><button class="loginbuttons" onclick="openCreate()">Signup</button></span>
       
-      <span class="password"> <a href="#"> Forgot password?</a></span>
+      <span class="password"> <button class="loginbuttons" onclick="openForgot()"> Forgot password?</span></span>
       </div>
     </div>
+    
+  <script>
+  function openCreate() {
+    window.open("createAccount.html", "create Account", "width=400,height=400");
+  }
+  function openForgot() {
+    window.open("forgot.html", "Forgot password", "width=400,height=400");
+  }
+  </script>
+
   </form>
