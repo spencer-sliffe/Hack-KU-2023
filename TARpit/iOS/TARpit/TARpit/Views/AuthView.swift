@@ -17,13 +17,13 @@ struct AuthView: View {
     @State private var isPresented = false
     
     var body: some View {
-        NavigationView {
+            NavigationView {
                 VStack(spacing: 20) {
+                    Spacer()
                     Image("TARpit-logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: UIScreen.main.bounds.height * 0.25)
-                        .padding(.top, UIScreen.main.bounds.height * 0.13)
                         .shadow(color: .black.opacity(1), radius: 2, x: 0, y: 0)
                     VStack {
                         Picker(selection: $selection, label: Text("Sign In or Sign Up")) {
@@ -101,11 +101,6 @@ struct AuthView: View {
                 if isAuthenticated {
                     signInSuccess = true // present the account view when the user is authenticated
                 }
-            }
-            .fullScreenCover(isPresented: $signInSuccess) {
-                HomePageView()
-                    .navigationBarBackButtonHidden(true)
-                    .navigationBarHidden(true)
             }
     }
 }

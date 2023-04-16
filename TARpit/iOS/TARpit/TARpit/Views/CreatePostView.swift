@@ -21,6 +21,8 @@ struct CreatePostView: View {
     @State private var selectedImage: UIImage?
     @State private var isImagePickerPresented = false
     @State private var selectedFile: Data?
+    @State private var selectedFileName: String?
+
 
     var body: some View {
         NavigationView {
@@ -45,7 +47,13 @@ struct CreatePostView: View {
                             .scaledToFit()
                             .frame(maxWidth: 200, maxHeight: 200)
                     }
-                    let fileURL = "testurl"
+                    if let fileName = selectedFileName {
+                        Text("Selected File: \(fileName)")
+                            .font(.footnote)
+                            .foregroundColor(.white)
+                            .padding(.bottom)
+                    }
+
                     HStack{
                         Button(action: {
                             isImagePickerPresented = true
@@ -70,53 +78,56 @@ struct CreatePostView: View {
                                 .cornerRadius(8)
                         }
                         .sheet(isPresented: $isDocumentPickerPresented) {
-                            DocumentPicker(fileData: $selectedFile)
+                            DocumentPicker(fileData: $selectedFile, onDocumentPicked: handlePickedDocument)
                         }
+
                     }
                     Spacer()
                     
-                        Button(action: {
-                            guard let userEmail = Auth.auth().currentUser?.email else {
-                                print("Error: User not logged in or email not found")
-                                return
-                            }
-                            let username = userEmail.components(separatedBy: "@")[0]
-                            let id = UUID()
-                            
-                            let timestamp = Date()
-                            let tarPost = TarPost(id: id, fileURL: fileURL, timestamp: timestamp, imageURL: nil, author: username, description: description, title: title)
-                            
-                            if let image = selectedImage {
-                                tarPitViewModel.uploadImage(image, postId: id.uuidString) { result in
-                                    switch result {
-                                    case .success(let imageURL):
-                                        let updatedPost = tarPost
-                                        updatedPost.imageURL = imageURL
-                                        tarPitViewModel.addPost(updatedPost) { _ in }
-                                    case .failure(let error):
-                                        print("Error uploading image: \(error.localizedDescription)")
-                                    }
+                    Button(action: {
+                        guard let userEmail = Auth.auth().currentUser?.email else {
+                            print("Error: User not logged in or email not found")
+                            return
+                        }
+                        let username = userEmail.components(separatedBy: "@")[0]
+                        let id = UUID()
+                        
+                        let timestamp = Date()
+                        var tarPost = TarPost(id: id, fileURL: nil, timestamp: timestamp, imageURL: nil, author: username, description: description, title: title)
+
+                        let uploadGroup = DispatchGroup()
+
+                        if let image = selectedImage {
+                            uploadGroup.enter()
+                            tarPitViewModel.uploadImage(image, postId: id.uuidString) { result in
+                                switch result {
+                                case .success(let imageURL):
+                                    tarPost.imageURL = imageURL
+                                case .failure(let error):
+                                    print("Error uploading image: \(error.localizedDescription)")
                                 }
-                            } else {
-                                tarPitViewModel.addPost(tarPost) { _ in }
+                                uploadGroup.leave()
                             }
-                            if let fileData = selectedFile {
-                                   FireStoreManager.shared.uploadFile(fileData, postId: id.uuidString) { result in
-                                       switch result {
-                                       case .success(let fileURL):
-                                           let updatedPost = tarPost
-                                           updatedPost.fileURL = fileURL
-                                           FireStoreManager.shared.addPost(updatedPost) { _ in }
-                                       case .failure(let error):
-                                           print("Error uploading file: \(error.localizedDescription)")
-                                       }
-                                   }
-                               } else {
-                                   FireStoreManager.shared.addPost(tarPost) { _ in }
-                               }
-                            
+                        }
+
+                        if let fileData = selectedFile {
+                            uploadGroup.enter()
+                            tarPitViewModel.uploadFile(fileData, postId: id.uuidString) { result in
+                                switch result {
+                                case .success(let fileURL):
+                                    tarPost.fileURL = fileURL
+                                case .failure(let error):
+                                    print("Error uploading file: \(error.localizedDescription)")
+                                }
+                                uploadGroup.leave()
+                            }
+                        }
+
+                        uploadGroup.notify(queue: .main) {
+                            tarPitViewModel.addPost(tarPost) { _ in }
                             presentationMode.wrappedValue.dismiss()
-                        }){
+                        }
+                    }) {
                         Text("Post")
                             .foregroundColor(.white)
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -134,11 +145,11 @@ struct CreatePostView: View {
         do {
             let fileData = try Data(contentsOf: document.fileURL)
             selectedFile = fileData
+            selectedFileName = document.fileURL.lastPathComponent
         } catch {
             print("Error reading document data: \(error.localizedDescription)")
         }
     }
-
     
     private func loadImage() {
         isImagePickerPresented = false

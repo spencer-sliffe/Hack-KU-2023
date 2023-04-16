@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 import MessageUI
+import Foundation
+import SwiftUI
+import MessageUI
 
 struct MailView: UIViewControllerRepresentable {
     let tarPost: TarPost
@@ -24,12 +27,15 @@ struct MailView: UIViewControllerRepresentable {
         vc.setMessageBody("Here is the requested tar file from the TARpit post titled: \(tarPost.title)", isHTML: false)
 
         if let fileURL = tarPost.fileURL, let url = URL(string: fileURL) {
-            do {
-                let data = try Data(contentsOf: url)
-                vc.addAttachmentData(data, mimeType: "application/x-tar", fileName: "file.tar")
-            } catch {
-                print("Error attaching file: \(error.localizedDescription)")
-            }
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        vc.addAttachmentData(data, mimeType: "application/x-tar", fileName: "file.tar")
+                    }
+                } else if let error = error {
+                    print("Error downloading tar file: \(error.localizedDescription)")
+                }
+            }.resume()
         }
 
         return vc
@@ -54,3 +60,4 @@ struct MailView: UIViewControllerRepresentable {
         }
     }
 }
+

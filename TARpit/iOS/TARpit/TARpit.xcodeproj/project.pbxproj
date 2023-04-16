@@ -26,7 +26,6 @@
 		456C83C929EA49F700AF52D9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83C829EA49F700AF52D9 /* AuthView.swift */; };
 		456C83CD29EA553300AF52D9 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83CC29EA553300AF52D9 /* HomePageView.swift */; };
 		456C83CF29EA57CA00AF52D9 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */; };
-		456C83D129EA57D400AF52D9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D029EA57D400AF52D9 /* StorageManager.swift */; };
 		456C83D329EA580D00AF52D9 /* TarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D229EA580D00AF52D9 /* TarRow.swift */; };
 		456C83D529EA5B8E00AF52D9 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D429EA5B8E00AF52D9 /* CreatePostView.swift */; };
 		456C83D829EAFA3B00AF52D9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83D729EAFA3B00AF52D9 /* CustomTextField.swift */; };
@@ -53,7 +52,6 @@
 		456C83C829EA49F700AF52D9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		456C83CC29EA553300AF52D9 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
-		456C83D029EA57D400AF52D9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		456C83D229EA580D00AF52D9 /* TarRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarRow.swift; sourceTree = "<group>"; };
 		456C83D429EA5B8E00AF52D9 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		456C83D729EAFA3B00AF52D9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				456C83CE29EA57CA00AF52D9 /* FireStoreManager.swift */,
-				456C83D029EA57D400AF52D9 /* StorageManager.swift */,
 			);
 			path = FireBase;
 			sourceTree = "<group>";
@@ -258,7 +255,6 @@
 				456C83B729EA3DB700AF52D9 /* Account.swift in Sources */,
 				456C83DC29EAFBDA00AF52D9 /* ImagePicker.swift in Sources */,
 				456C83BD29EA415200AF52D9 /* TarPitView.swift in Sources */,
-				456C83D129EA57D400AF52D9 /* StorageManager.swift in Sources */,
 				456C83D829EAFA3B00AF52D9 /* CustomTextField.swift in Sources */,
 				456C83D529EA5B8E00AF52D9 /* CreatePostView.swift in Sources */,
 				456C839829EA34D100AF52D9 /* TARpitApp.swift in Sources */,

@@ -207,4 +207,18 @@ class FireStoreManager {
             }
         }
     }
+    
+    func deleteFile(fileURL: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference(forURL: fileURL)
+        
+        storageRef.delete { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+
 }

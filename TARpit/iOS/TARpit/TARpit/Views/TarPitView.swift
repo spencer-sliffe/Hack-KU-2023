@@ -38,7 +38,8 @@ struct TarPitView: View {
                         .foregroundColor(.white)
                 }
                 .padding(.horizontal)
-            }.frame(height: 20)
+            }
+            .frame(height: 20)
             Spacer()
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
@@ -69,6 +70,7 @@ struct TarPitView: View {
             )
         )
         .edgesIgnoringSafeArea(.bottom)
+        
         .onAppear {
             viewModel.fetchPosts()
         }

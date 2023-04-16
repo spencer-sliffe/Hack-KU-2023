@@ -11,15 +11,18 @@ import UniformTypeIdentifiers
 
 struct DocumentPicker: UIViewControllerRepresentable {
     @Binding var fileData: Data?
-    
+    @State private var selectedFileName: String?
+    var onDocumentPicked: (UIDocument) -> Void
+
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
+            Coordinator(self, onDocumentPicked: onDocumentPicked)
+        }
     
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.data], asCopy: true)
         documentPicker.delegate = context.coordinator
         documentPicker.allowsMultipleSelection = false
+        context.coordinator.onDocumentPicked = onDocumentPicked
         return documentPicker
     }
     
@@ -29,20 +32,18 @@ struct DocumentPicker: UIViewControllerRepresentable {
     
     class Coordinator: NSObject, UIDocumentPickerDelegate {
         var parent: DocumentPicker
+        var onDocumentPicked: (UIDocument) -> Void
         
-        init(_ parent: DocumentPicker) {
+        init(_ parent: DocumentPicker, onDocumentPicked: @escaping (UIDocument) -> Void) {
             self.parent = parent
+            self.onDocumentPicked = onDocumentPicked
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
             guard let url = urls.first else { return }
             
-            do {
-                let fileData = try Data(contentsOf: url)
-                parent.fileData = fileData
-            } catch {
-                print("Error reading document data: \(error.localizedDescription)")
-            }
+            let document = UIDocument(fileURL: url)
+            onDocumentPicked(document)
         }
     }
 }

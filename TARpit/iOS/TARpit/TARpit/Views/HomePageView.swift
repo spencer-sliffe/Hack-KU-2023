@@ -7,19 +7,20 @@
 
 import Foundation
 import SwiftUI
+
+
 struct HomePageView: View {
     @State private var selectedTab = 2
     @ObservedObject var authViewModel = AuthViewModel()
     
     var body: some View {
-        NavigationView {
+
             ZStack {
                 LinearGradient(
                     gradient: Gradient(colors: [.yellow, .black]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
-                .edgesIgnoringSafeArea(.all)
                 
                 if !authViewModel.isAuthenticated {
                     AuthView(authViewModel: authViewModel)
@@ -33,12 +34,10 @@ struct HomePageView: View {
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .navigationBarHidden(true)
                 }
-            }
-            .edgesIgnoringSafeArea(.all)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+            }.edgesIgnoringSafeArea(.all)
     }
 }
+
 
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
