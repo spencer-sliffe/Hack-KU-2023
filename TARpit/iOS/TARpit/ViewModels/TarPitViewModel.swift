@@ -130,4 +130,14 @@ class TarPitViewModel: ObservableObject {
             }
         }
     }
+    
+    func fetchUserPosts(userEmail: String, completion: @escaping (Result<[TarPost], Error>) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            self.postManager.fetchUserPosts(userEmail: userEmail) { result in
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+        }
+    }
 }

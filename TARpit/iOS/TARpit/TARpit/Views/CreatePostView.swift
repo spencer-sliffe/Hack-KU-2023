@@ -22,8 +22,8 @@ struct CreatePostView: View {
     @State private var isImagePickerPresented = false
     @State private var selectedFile: Data?
     @State private var selectedFileName: String?
-
-
+    
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -53,7 +53,7 @@ struct CreatePostView: View {
                             .foregroundColor(.white)
                             .padding(.bottom)
                     }
-
+                    
                     HStack{
                         Button(action: {
                             isImagePickerPresented = true
@@ -80,7 +80,7 @@ struct CreatePostView: View {
                         .sheet(isPresented: $isDocumentPickerPresented) {
                             DocumentPicker(fileData: $selectedFile, onDocumentPicked: handlePickedDocument)
                         }
-
+                        
                     }
                     Spacer()
                     
@@ -94,9 +94,9 @@ struct CreatePostView: View {
                         
                         let timestamp = Date()
                         var tarPost = TarPost(id: id, fileURL: nil, timestamp: timestamp, imageURL: nil, author: username, description: description, title: title)
-
+                        
                         let uploadGroup = DispatchGroup()
-
+                        
                         if let image = selectedImage {
                             uploadGroup.enter()
                             tarPitViewModel.uploadImage(image, postId: id.uuidString) { result in
@@ -109,7 +109,7 @@ struct CreatePostView: View {
                                 uploadGroup.leave()
                             }
                         }
-
+                        
                         if let fileData = selectedFile {
                             uploadGroup.enter()
                             tarPitViewModel.uploadFile(fileData, postId: id.uuidString) { result in
@@ -122,7 +122,7 @@ struct CreatePostView: View {
                                 uploadGroup.leave()
                             }
                         }
-
+                        
                         uploadGroup.notify(queue: .main) {
                             tarPitViewModel.addPost(tarPost) { _ in }
                             presentationMode.wrappedValue.dismiss()

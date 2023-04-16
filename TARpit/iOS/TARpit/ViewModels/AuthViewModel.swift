@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import Combine
+import FirebaseAuth
 
 class AuthViewModel: ObservableObject {
     @Published var email = ""

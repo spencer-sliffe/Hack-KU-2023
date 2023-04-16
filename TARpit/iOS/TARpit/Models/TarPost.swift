@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class TarPost: Identifiable, ObservableObject {
     var id = UUID()
@@ -25,4 +26,17 @@ class TarPost: Identifiable, ObservableObject {
         self.description = description
         self.title = title
     }
+    
+    init(document: DocumentSnapshot) {
+        let data = document.data() ?? [:]
+        self.id = UUID(uuidString: data["id"] as? String ?? "") ?? UUID()
+        self.fileURL = data["fileURL"] as? String
+        self.timestamp = (data["timestamp"] as? Timestamp)?.dateValue() ?? Date()
+        self.imageURL = data["imageURL"] as? String
+        self.author = data["author"] as? String ?? ""
+        self.description = data["description"] as? String ?? ""
+        self.title = data["title"] as? String ?? ""
+    }
+
 }
+

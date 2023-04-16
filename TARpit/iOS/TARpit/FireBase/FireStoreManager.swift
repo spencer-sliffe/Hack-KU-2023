@@ -220,5 +220,17 @@ class FireStoreManager {
             }
         }
     }
-
+    
+    func fetchUserPosts(userEmail: String, completion: @escaping (Result<[TarPost], Error>) -> Void) {
+        let db = Firestore.firestore()
+        let query = db.collection("Posts").whereField("author", isEqualTo: userEmail)
+        query.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                let tarPosts = snapshot?.documents.compactMap { TarPost(document: $0) } ?? []
+                completion(.success(tarPosts))
+            }
+        }
+    }
 }

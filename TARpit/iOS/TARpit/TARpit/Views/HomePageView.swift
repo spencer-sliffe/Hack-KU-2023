@@ -8,33 +8,33 @@
 import Foundation
 import SwiftUI
 
-
 struct HomePageView: View {
     @State private var selectedTab = 2
     @ObservedObject var authViewModel = AuthViewModel()
     
     var body: some View {
-
-            ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: [.yellow, .black]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                
-                if !authViewModel.isAuthenticated {
-                    AuthView(authViewModel: authViewModel)
-                } else {
-                    TabView(selection: $selectedTab) {
-                        AccountView(authViewModel: authViewModel)
-                            .tag(0)
-                        TarPitView()
-                            .tag(1)
-                    }
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                    .navigationBarHidden(true)
+        
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [.yellow, .black]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            
+            if !authViewModel.isAuthenticated {
+                AuthView(authViewModel: authViewModel)
+            } else {
+                TabView(selection: $selectedTab) {
+                    AccountView(authViewModel: authViewModel)
+                        .tag(0)
+                    TarPitView()
+                        .tag(1)
                 }
-            }.edgesIgnoringSafeArea(.all)
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .navigationBarHidden(true)
+            }
+        }
+        .edgesIgnoringSafeArea(.vertical)
     }
 }
 

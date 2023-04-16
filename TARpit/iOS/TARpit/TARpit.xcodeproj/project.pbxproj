@@ -33,6 +33,7 @@
 		456C83DC29EAFBDA00AF52D9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83DB29EAFBDA00AF52D9 /* ImagePicker.swift */; };
 		456C83DE29EB0B6100AF52D9 /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83DD29EB0B6100AF52D9 /* DocumentPicker.swift */; };
 		456C83E029EB0DE300AF52D9 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456C83DF29EB0DE300AF52D9 /* MailView.swift */; };
+		45D1827229EC101500BA6F45 /* UserTarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D1827129EC101500BA6F45 /* UserTarRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		456C83DB29EAFBDA00AF52D9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		456C83DD29EB0B6100AF52D9 /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		456C83DF29EB0DE300AF52D9 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		45D1827129EC101500BA6F45 /* UserTarRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTarRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				456C83B429EA3DAB00AF52D9 /* TarPost.swift */,
 				456C83B629EA3DB700AF52D9 /* Account.swift */,
 				456C83D229EA580D00AF52D9 /* TarRow.swift */,
+				45D1827129EC101500BA6F45 /* UserTarRow.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				456C83B929EA412600AF52D9 /* TarPitViewModel.swift in Sources */,
 				456C83C929EA49F700AF52D9 /* AuthView.swift in Sources */,
 				456C83D329EA580D00AF52D9 /* TarRow.swift in Sources */,
+				45D1827229EC101500BA6F45 /* UserTarRow.swift in Sources */,
 				456C83CD29EA553300AF52D9 /* HomePageView.swift in Sources */,
 				456C83E029EB0DE300AF52D9 /* MailView.swift in Sources */,
 			);

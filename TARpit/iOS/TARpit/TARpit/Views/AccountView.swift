@@ -52,11 +52,22 @@ struct AccountView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                
             } else {
                 Text("Failed to fetch account data")
                     .foregroundColor(.white)
             }
+            VStack(alignment: .leading, spacing: 10) {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(viewModel.userPosts.sorted(by: { $0.timestamp > $1.timestamp })) { tarPost in
+                            UserTarRow(tarPost: tarPost)
+                                .environmentObject(TarPitViewModel())
+                                .background(Color.clear)
+                        }
+                    }
+                }
+            }
+            .padding(.horizontal)
             Spacer()
             Button(action: {
                 authViewModel.signOut() // Call the signOut method on the injected view model
@@ -69,5 +80,8 @@ struct AccountView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [.yellow, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
+        .onAppear {
+            viewModel.fetchAccount()
+        }
     }
 }

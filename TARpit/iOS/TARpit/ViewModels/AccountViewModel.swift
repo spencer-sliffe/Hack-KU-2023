@@ -36,6 +36,19 @@ class AccountViewModel: ObservableObject {
             
             self.account = account
             self.isLoading3 = false
+
+            // Fetch user posts
+            let emailComponents = email.split(separator: "@")
+            let displayName = String(emailComponents[0])
+            FireStoreManager.shared.fetchUserPosts(userEmail: displayName) { [weak self] result in
+                switch result {
+                case .success(let userPosts):
+                    self?.userPosts = userPosts
+                case .failure(let error):
+                    print("Error fetching user posts: \(error.localizedDescription)")
+                }
+            }
         }
     }
+
 }
