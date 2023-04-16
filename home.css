@@ -80,7 +80,7 @@ body {
 
  }
   .feed{
-    overflow-y: scroll;
+    overflow-y: hidden;
     background-color: #000;
     color: white;
     padding: 10px;
@@ -215,3 +215,7 @@ body {
     cursor: pointer; /* Change the cursor to a pointer */
   }
   
+  div::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }

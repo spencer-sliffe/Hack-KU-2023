@@ -9,16 +9,27 @@
     <div class="createAccount" style="margin-top: 10%;">
       
       <input id="email" class="create" id="email" placeholder="Email"  required>
-      <input id="Password" class="create"  placeholder="Password"  required>
-      <input id=" Confirm Password" class="create"  placeholder=" Confirm Password"  required>
+      <input for="password" id="Password" class="create"  placeholder="Password"  required>
+      <input for="confirm"id=" Confirm Password" class="create"  placeholder=" Confirm Password"  required>
     </div>
   
     <div class="login">
-    <button class="login" onclick="saveUser()" style="font-size: 16pt"; type="create" href="home.html">Create</button>
+    <button class="login" onclick="comparePasswords()" style="font-size: 16pt"; type="create" >Create</button>
         
     
     </div>
     <script>
-        //add code to compare password and confirm password
-    </script>
+       function comparePasswords() {
+    var password = document.getElementById("password").value;
+    var confirm = document.getElementById("confirm").value;
+  
+  if (confirm === password) {
+    saveUser();
+
+  } else {
+    alert("The passwords must match.");
+  }
+}
+</script>
+    
   </form>
